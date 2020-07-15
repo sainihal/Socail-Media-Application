@@ -53,3 +53,18 @@ closeButton.forEach(e => {
 window.addEventListener("click", windowOnClick);
 
 // -------------- Toggles Modals ---------------------
+
+// -------------- Handle login ---------------------
+
+// -------------- Handle login ---------------------
+
+// -------------- Handle sign up ---------------------
+
+// -------------- Handle sign up ---------------------
+
+// -------------- Handle reset pwd ---------------------
+
+// -------------- Handle reset pwd ---------------------
+
+
+
