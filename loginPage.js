@@ -55,15 +55,52 @@ window.addEventListener("click", windowOnClick);
 // -------------- Toggles Modals ---------------------
 
 // -------------- Handle login ---------------------
-
+var login_form = document.querySelector('#login-form')
+login_form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let button = login_form.querySelector('.options > button')
+    button.textContent = 'Logging In...'
+    
+    setTimeout(() => {
+        button.textContent = 'Login'
+        location.href = '#' // Add path to user page after login  <-----------------
+    }, 2000)
+})
 // -------------- Handle login ---------------------
 
 // -------------- Handle sign up ---------------------
+var sign_up_form = document.querySelector('#sign-up-form')
+sign_up_form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let button = sign_up_form.querySelector('.options > button')
+    button.textContent = 'Creating Account...'
+    
+    //Enter code to save user info into database          <-----------------
+    
+    setTimeout(() => {
+        button.textContent = 'Done!'
+    }, 2000)
+    setTimeout(() => {
+        button.textContent = 'Sign Up'
+        modal.classList.toggle('show-modal')
+    }, 3000)
 
+})
 // -------------- Handle sign up ---------------------
 
 // -------------- Handle reset pwd ---------------------
+var pwd_reset_form = document.querySelector('#pwd-reset-form')
+pwd_reset_form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    let button = pwd_reset_form.querySelector('.options > button')
+    button.textContent = 'Email Sent!'
+    
+    setTimeout(() => {
+        button.textContent = 'Reset Password'
+        modal2.classList.toggle('show-modal')
+    }, 2000)
 
+})
 // -------------- Handle reset pwd ---------------------
 
 
