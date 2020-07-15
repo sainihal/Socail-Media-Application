@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>BonFire</title>
+        <link rel="shortcut icon" href="resources/shortcut-logo.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto:wght@300&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="loginPage.css">
+    </head>
+    <body>
+        <div class="log-card">
+            <form id="login-form">
+                <div class="brand">
+                    <img class="logo" src="resources/logo.png" alt="logo">
+                    <h3>BonFire</h3>
+                </div>
+                <div class="card-sub-head">Sign in to continue</div>
+                <div class="input-container">
+                    <input type="text" id="username">
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-container">
+                    <input type="password" id="pwd" >
+                    <label for="pwd">Password</label>
+                </div>
+                <div class="options">
+                    <a href="#" id="reset-pwd">Forgot Password?</a>
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            <div style="position: relative; margin-top: 30px; margin-bottom: 30px;">
+                <hr style="color: lightgray;">
+                <span style="position: absolute; top: -8px; left: 40%; background-color: white; padding: 0px 20px;">OR</span>
+            </div>
+            <button class="sign-up trigger">Create new account</button>
+        </div>
+        <div class="modal" id="sign-up-modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <form id="sign-up-form">
+                    <div class="brand">
+                        <img class="logo" src="resources/logo.png" alt="logo">
+                        <h3>BonFire</h3>
+                    </div>
+                    <div class="card-sub-head">Create new account</div>
+                    <div class="input-container">
+                        <input type="text" id="username" placeholder="Username" style="font-size: large;">
+                    </div>
+                    <div class="input-container">
+                        <input type="email" id="email" placeholder="Email" style="font-size: large;">
+                    </div>
+                    <div class="input-container">
+                        <input type="password" id="pwd" placeholder="Password" style="font-size: large;">
+                    </div>
+                    <div class="options" style="justify-content: center;">
+                        <button id="add-user" style="width: 80%;" type="submit">Sign Up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal" id="reset-pwd-modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <form id="pwd-reset-form">
+                    <div class="brand">
+                        <img class="logo" src="resources/logo.png" alt="logo">
+                        <h3>BonFire</h3>
+                    </div>
+                    <div class="card-sub-head">Enter email to reset password</div>
+                    <div class="input-container">
+                        <input type="email" id="email" placeholder="Email" style="font-size: large;">
+                    </div>
+                    <div class="options" style="justify-content: center;">
+                        <button id="reset-pwd-button" style="width: 80%;" type="submit">Reset Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="loginPage.js"></script>
+    </body>
+</html>
