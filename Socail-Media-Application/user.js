@@ -7,3 +7,8 @@ class User{
     }
 }
 
+function createUser(name,password){
+    return new User(name,password)
+}
+
+export default createUser;

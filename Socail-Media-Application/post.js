@@ -1,7 +1,7 @@
 var postId = 0
 
 class Post {
-    constructor(username="", postDesc="", imgURL=""){
+    constructor(username, postDesc, imgURL){
         this.username = username
         this.postDesc = postDesc
         this.postId = postId++
@@ -17,3 +17,9 @@ class Post {
         this.timeStamp = Date.now()
     }
 }
+
+function createPost(username="",postDesc="",imgURL=""){
+    return new Post(username,postId,imgURL)
+}
+
+export default createPost;
