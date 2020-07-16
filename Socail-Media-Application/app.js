@@ -21,13 +21,13 @@ var all_users_data = {
     username2: {
             name: "name",
             password: "password2",
-            followers: ["username1", "username3"],
+            followers: ["username3"],
             userPosts: [post2],
         },
         username3: {
                 name: "name",
                 password: "password3",
-                followers: ["username1", "username2"],
+                followers: ["username2"],
                 userPosts: [post3],
             }
         }
