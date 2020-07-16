@@ -57,27 +57,86 @@ window.addEventListener("click", windowOnClick);
 // -------------- Toggles Modals ---------------------
 
 // -------------- Handle login ---------------------
+
+function validateLogin(username, pwd) {
+    console.log(username, pwd)
+    //on success redirects to user_main_page i.e call renderUSersMainPage(user)
+    let all_users_data = JSON.parse(localStorage.getItem("all_users_data"))
+    console.log(all_users_data)
+    if(!all_users_data.hasOwnProperty(username)){
+        document.getElementById("sub-head").innerText = "User Not Found! Register?"
+        return false
+    }
+
+    else if(all_users_data[username].password === pwd){
+        localStorage.setItem("loggedIn",JSON.stringify(username))
+        current_username = username;
+        return true
+    }
+    else{
+        document.getElementById("sub-head").innerText = "Invalid Password"
+        return false
+    }
+    //on failure display appropraite error message //error in pwd or  user not found, register
+}
+
 var login_form = document.querySelector('#login-form')
 login_form.addEventListener('submit', (e) => {
     e.preventDefault()
     let button = login_form.querySelector('.options > button')
     button.textContent = 'Logging In...'
     
+    let username = login_form.querySelector('#username').value
+    let pwd = login_form.querySelector('#pwd').value
+
+    let valid_login = validateLogin(username, pwd)
+
     setTimeout(() => {
         button.textContent = 'Login'
-        location.href = '#' // Add path to user page after login  <-----------------
+        document.getElementById("sub-head").innerText = "Sign in to continue"
+        if(valid_login) {
+            location.href = 'mainPage.html'
+        }
     }, 2000)
 })
 // -------------- Handle login ---------------------
 
+// -------------- User Class -----------------------
+class User{
+    constructor(name,password){
+        this.name = name;
+        this.password=password;
+        this.followers = [];
+        this.userPosts = [];
+    }
+}
+// -------------- User Class -----------------------
+
 // -------------- Handle sign up ---------------------
+
+function onRegister({ name,username,pwd }) {                       
+    //crates a modal                                                            
+    let user = new User(name,pwd)
+    if(JSON.parse(localStorage.getItem("all_users_data")) === null) {
+        localStorage.setItem("all_users_data", JSON.stringify({}))
+    }
+    let totUsers = JSON.parse(localStorage.getItem("all_users_data"))
+    totUsers[username] = user
+    localStorage.setItem("all_users_data",JSON.stringify(totUsers))
+    //saves to db
+    //close the modal
+}
+
 var sign_up_form = document.querySelector('#sign-up-form')
 sign_up_form.addEventListener('submit', (e) => {
     e.preventDefault()
     let button = sign_up_form.querySelector('.options > button')
     button.textContent = 'Creating Account...'
-    
-    //Enter code to save user info into database          <-----------------
+    let username = sign_up_form.querySelector("#username").value
+    let name = sign_up_form.querySelector("#email").value
+    let pwd = sign_up_form.querySelector("#pwd").value
+    ///Add register code here <-----------------------------------
+    onRegister({name, username, pwd})
     
     setTimeout(() => {
         button.textContent = 'Done!'
