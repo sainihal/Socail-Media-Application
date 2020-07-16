@@ -1,3 +1,5 @@
+import handlePostLikesComments from './postHandler.js'
+
 var current_username = JSON.parse(localStorage.getItem("loggedIn"))
 
 document.getElementById("getMainPosts").addEventListener("click",function(e){
@@ -20,23 +22,48 @@ function renderMainPosts(posts){                                            //cr
     let div = document.createElement("div")
     let len = posts.length
     let p
+    let like
+    let comment
     for(let i=0;i<len;i++){
         // post = renderPostToDiv(posts[i],div)
         p = document.createElement("p")
         p.innerText = JSON.stringify(posts[i])
-        div.appendChild(p)
+        console.log(posts[i].postId)
+        like = document.createElement("button")
+        like.innerHTML = "LIKE"
+        like.setAttribute("Id","like,"+posts[i].postId)
+        like.addEventListener("click",function(e){
+            e.preventDefault()                                                                                         //for like or comment button give id same as the post id that is generated at time of creating the post
+            handlePostLikesComments(posts[i].postId,true)
+        })
+        comment = document.createElement("button")
+        comment.innerHTML = "COMMENT"
+        comment.setAttribute("Id","comment,"+posts[i].postId)
+        comment.addEventListener("click",function(e){
+            e.preventDefault()
+            handlePostLikesComments(posts[i].postId)
+        })
+        console.log(p,like,comment)
+        div.append(p,like,comment)
     }
-    document.getElementById("mainPosts").appendChild(div)
+    let mainPostsSection = document.getElementById("mainPosts")
+    mainPostsSection.innerHTML = ""
+    mainPostsSection.appendChild(div)
 }
 
-function getUsersMainPosts(users_data){
+function getUsersMainPosts(user_data){
     let all_users_data =  JSON.parse(localStorage.getItem("all_users_data"))
     let posts = []
-    users_data.userPosts.map(ele => posts.push(ele))
-    let following_users = users_data.followers
+    // user_data.userPosts.map(ele => posts.push(ele))
+     let userPostslen = user_data.userPosts.length
+     for(let i =0;i<userPostslen;i++){
+         posts.push(user_data.userPosts[i])
+     }
+    let following_users = user_data.followers
     let len = following_users.length
     for(let i=0;i<len;i++){
         all_users_data[following_users[i]].userPosts.map(ele => posts.push(ele))
     }
+    console.log("in users main posts",posts)
     return posts
 }
