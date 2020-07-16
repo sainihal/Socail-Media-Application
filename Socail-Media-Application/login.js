@@ -8,12 +8,9 @@ document.getElementById("login").addEventListener("click",function(e){
 function validateLogin(username, pwd) {
     //on success redirects to user_main_page i.e call renderUSersMainPage(user)
     let all_users_data = JSON.parse(localStorage.getItem("all_users_data"))
-    console.log("in validate login")
-    console.log(all_users_data,username)
-    console.log(all_users_data[username])
-    console.log()
+
     if(!all_users_data[username]){
-        document.getElementById("login_error").innerText = "User Not Found! Register?"
+        document.getElementById("sub-head").innerText = "User Not Found! Register?"
         return
     }
 
@@ -24,7 +21,7 @@ function validateLogin(username, pwd) {
         
     }
     else{
-        document.getElementById("login_error").innerText = "Invalid Password"
+        document.getElementById("sub-head").innerText = "Invalid Password"
     }
     //on failure display appropraite error message //error in pwd or  user not found, register
 }
