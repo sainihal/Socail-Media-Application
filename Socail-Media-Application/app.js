@@ -136,6 +136,7 @@ localStorage.setItem("all_users_data",JSON.stringify(all_users_data))
 function renderPostsToDiv(post,div){                                        //it should render into whole div and return
 return div
 }
+
 function renderUsersProfilePage(user) {
     //displays proifle info
     //renders all the posts only by user
@@ -145,13 +146,13 @@ function sort(option) {
     //sort by option
 }
 
-function createNewPost(user) {
-    //opens a modal
-    // give data //create                                                                                                               //
-    //creates new post and stores to db
-}
+// function createNewPost(user) {
+//     //opens a modal
+//     // give data //create                                                                                                               //
+//     //creates new post and stores to db
+// }
 
-function handleLikesComments(post, user) {
+function handlePostLikesComments(post, user) {
     //updates the likes and comments(changes the likes and comments and stores to local storage)
 }
 

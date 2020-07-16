@@ -11,7 +11,7 @@ class Post {
         }
         this.comments = {
             count:0,
-            commnetsUsers:{}
+            commentsUsers:[]
         }
         this.imgURL = imgURL;
         this.timeStamp = Date.now()
@@ -19,7 +19,7 @@ class Post {
 }
 
 function createPost(username="",postDesc="",imgURL=""){
-    return new Post(username,postId,imgURL)
+    return new Post(username,postDesc,imgURL)
 }
 
 export default createPost;
